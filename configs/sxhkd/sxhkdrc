@@ -1,0 +1,37 @@
+super + Escape
+	pkill -USR1 -x sxhkd; \
+	notify-send "sxhkd restarted"
+
+XF86AudioRaiseVolume
+     pamixer -i 5
+XF86AudioLowerVolume
+     pamixer -d 5  
+XF86AudioMute
+	pamixer -t 
+
+XF86MonBrightness{Down,Up}
+	light {-U,-A} 5
+
+super + return 
+	kitty
+
+super + shift + w
+	.local/bin/wifi-dmenu.sh
+	notify-send "searching..."
+
+ctrl + shift + Z
+	st
+super + v 
+	code 
+alt + F4
+	.local/bin/powermenu
+super + e
+	thunar
+
+super + shift + R
+	rofi -show combi -modes combi -combi-modes "window,drun,run"
+
+ctrl + shift + e
+ 	rofi -show emoji
+ctrl + alt + l
+	slock
