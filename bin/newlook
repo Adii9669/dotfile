@@ -1,0 +1,14 @@
+#!/bin/sh 
+
+
+wall=$( find ~/Pictures/anime -type f -name "*.png" -o -name "*.jpg" | shuf -n 1)
+
+# add this as background wallpaper
+ feh --bg-scale $wall
+
+wal -c
+	wal -i  $wall 
+
+#xdotool key super+F5
+
+
