@@ -3,16 +3,16 @@ shell zsh
 cursor_shape block
 
 #font 
-font_family      Hack Nerd Medium
-bold_font        Hack Nerd Bold
-italic_font      Hack Nerd Italic
-bold_italic_font Hack Nerd Bold Italic
+font_family      FiraCode Nerd Font Reg 
+bold_font        FiraCode Nerd Font Reg 
+italic_font     FiraCode Nerd Font Reg  
+bold_italic_font FiraCode Nerd Font Reg  
 font_size 14
 
 #map ctrl + plus change_font_size all +2.0
 
 #background #282a36
-background_opacity 1.0
+background_opacity 0.9
 
 
 

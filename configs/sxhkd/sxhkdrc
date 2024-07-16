@@ -2,36 +2,64 @@ super + Escape
 	pkill -USR1 -x sxhkd; \
 	notify-send "sxhkd restarted"
 
+
+#volume
 XF86AudioRaiseVolume
-     pamixer -i 5
+      .local/bin/changevolume up
+
 XF86AudioLowerVolume
-     pamixer -d 5  
+     pamixer -d 5 && .local/bin/changevolume down 
+
 XF86AudioMute
-	pamixer -t 
+	pamixer -t  
 
 XF86MonBrightness{Down,Up}
 	light {-U,-A} 5
 
+
+
+#application
 super + return 
 	kitty
-
-super + w
-	.local/bin/wifi-dmenu.sh
-	notify-send "searching..."
-
 ctrl + shift + Z
 	st
 super + v 
 	code 
-alt + F4
-	.local/bin/powermenu
+super + c 
+	cursor
+super + z
+	thorium-browser
 super + e
 	thunar
 
-super + shift + R
+
+
+#poweroff/reboot
+ctrl + Escape
+	.config/rofi/powermenu.sh
+ctrl + alt + z
+	.local/bin/reboot 
+
+
+
+
+
+
+
+
+#rofi-menu launcher
+super  + a
 	rofi -show combi -modes combi -combi-modes "window,drun,run"
 
-ctrl + shift + e
+super + ,
  	rofi -show emoji
+
 ctrl + l 
-	betterlockscreen -l dim 
+	betterlockscreen -l dim
+
+
+#notification
+super + w
+	.local/bin/wifi-dmenu.sh
+	notify-send "searching..." F8
+	nmcli radio wifi {on,off} && notify-send "ON/OFF"
