@@ -1,22 +1,44 @@
 return {
-	"mhartington/formatter.nvim",
+
+	"stevearc/conform.nvim",
+
+	event = { "BufReadPre", "BufNewFile" },
 
 	config = function()
-		require("formatter").setup({
-			-- Enable or disable logging
-			logging = true,
-			-- Set the log level
-			log_level = vim.log.levels.WARN,
+		local conform = require("conform")
 
-			filetype = {
-				-- Formatter configurations for filetype "lua" go here
-				-- and will be executed in order
-				lua = {
-					require("formatter.filetypes.lua").stylua,
-				},
+		conform.setup({
+			formatters_by_ft = {
+				javascript = { "prettier" },
+				typescript = { "prettier" },
+				javascriptreact = { "prettier" },
+				typescriptreact = { "prettier" },
+				svelte = { "prettier" },
+				css = { "prettier" },
+				html = { "prettier" },
+				json = { "prettier" },
+				yaml = { "prettier" },
+				markdown = { "prettier" },
+				graphql = { "prettier" },
+				lua = { "stylua" },
+				python = { "isort", "black" },
 			},
-			-- Use the special "*" filetype for defining formatter configurations on
-			["*"] = { require("formatter.filetypes.any").remove_trailing_whitespace },
+
+			format_on_save = {
+				lsp_fallback = true,
+				async = false,
+				timeout_ms = 500,
+			},
+
+			{
+				vim.keymap.set({ "n", "v" }, "<leader>ff", function()
+					conform.format({
+						lsp_fallback = true,
+						async = false,
+						timeout_ms = 500,
+					})
+				end, { desc = "Format file or range (in visual mode)" }),
+			},
 		})
 	end,
 }
