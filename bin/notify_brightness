@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# Initialize previous_brightness variable
+previous_brightness=""
+
+function send_notification() {
+  brightness=$(light)  # Get current brightness value
+  brightness_int=$(echo "$brightness" | cut -d. -f1)  # Extract integer part of brightness
+
+  # Only send notification if brightness has changed
+  if [[ "$brightness_int" != "$previous_brightness" ]]; then
+    previous_brightness="$brightness_int"  # Update the previous brightness value
+
+    # Choose Nerd Font icon based on brightness level
+    if [ "$brightness_int" -le 20 ]; then
+      icon="󰃞  Brightness "  # Low brightness
+    elif [ "$brightness_int" -le 60 ]; then
+      icon="󰃟  Brightness "  # Medium brightness
+    else
+      icon="󰃠  Brightness "  # High brightness
+    fi
+
+    # Send the notification using dunstify
+    dunstify -a "ChangeBright" -u normal -r 8888 -h int:value:"$brightness_int" "$icon ${brightness_int}%" -t 1000
+  fi
+}
+
+case $1 in 
+  up)
+    light -A 5  # Increase brightness by 5%
+    send_notification
+    ;;
+  down)
+    light -U 5  # Decrease brightness by 5%
+    send_notification
+    ;;
+  *)
+    echo "Usage: $0 {up|down}"
+    exit 1
+    ;;
+esac
+
