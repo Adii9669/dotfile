@@ -1,65 +1,48 @@
-super + Escape
-	pkill -USR1 -x sxhkd; \
-	notify-send "sxhkd restarted"
+# Reload sxhkd
+alt + r
+    pkill -USR1 -x sxhkd; dunstify  " "" sxhkd Restarted" 
+
+# Reload dunst (alt + d)
+alt + d
+    killall dunst; dunst &;dunstify "󰎟" "dunst Restarted"
 
 
-#volume
+
+# Increase volume
 XF86AudioRaiseVolume
-      .local/bin/changevolume up
-
+    .local/bin/notify_volume up
+# Decrease volume
 XF86AudioLowerVolume
-     pamixer -d 5 && .local/bin/changevolume down 
-
+    .local/bin/notify_volume down
+# Mute/unmute
 XF86AudioMute
-	pamixer -t  
+    .local/bin/notify_volume mute  
 
-XF86MonBrightness{Down,Up}
-	light {-U,-A} 5
-
-
-
-#application
-super + return 
-	kitty
-ctrl + shift + Z
-	st
-super + v 
-	code 
-super + c 
-	cursor
-super + z
-	thorium-browser
-super + e
-	thunar
+#Brightness up
+XF86MonBrightnessUp
+    .local/bin/notify_brightness up
+#Brightness Down
+XF86MonBrightnessDown
+    .local/bin/notify_brightness down
 
 
 
-#poweroff/reboot
-ctrl + Escape
-	.config/rofi/powermenu.sh
-ctrl + alt + z
-	.local/bin/reboot 
-
-
-
-
-
-
-
-
-#rofi-menu launcher
-super  + a
+#application launcer 
+alt + space
 	rofi -show combi -modes combi -combi-modes "window,drun,run"
 
-super + ,
- 	rofi -show emoji
+#Thunar
+super + e
+      thunar
 
-ctrl + l 
-	betterlockscreen -l dim
+#PowerManagement
+super + n 
+      /home/milo/.local/bin/power_toggle
 
 
-#notification
-super + w
-	.local/bin/wifi-dmenu.sh
-	notify-send "searching..." F8
-	nmcli radio wifi {on,off} && notify-send "ON/OFF"
+
+
+
+#Take the ScreenShot
+super + shift + s
+	flameshot gui -d 200; gimp ~/Pictures/Screenshot_$(date +%F_%T).png

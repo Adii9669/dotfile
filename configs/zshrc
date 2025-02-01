@@ -1,0 +1,25 @@
+# Created by newuser for 5.9
+
+
+
+#autojump
+eval "$(zoxide init bash)"
+
+#autocomplete
+autoload -Uz compinit
+compinit
+autoload -Uz promptinit
+  promptinit
+  prompt redhat
+
+
+#for case sentive names
+
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' menu select
+
+#to start x server automatically
+# if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
+#   exec startx
+# fi
+
