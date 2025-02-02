@@ -1,32 +1,41 @@
-# 🖥️ My Arch Linux Setup
+# 🖥️ My Arch Linux Setup  
 
-## 📌 System Configuration
+## 📌 System Configuration  
 
-- **OS**: Arch Linux
-- **Window Manager**: DWM
-- **Status Bar**: dwmblocks
-- **Compositor**: Picom (FTLabs)
-- **Terminal**: Kitty
-- **File Manager**: Thunar
-- **Application Launcher**: Rofi
-- **Editor**: Vim, Neovim
-- **Keybindings**: sxhkd
-- **Notification Manager**: Dunst
+- **OS**: Arch Linux  
+- **Window Manager**: DWM  
+- **Status Bar**: dwmblocks  
+- **Compositor**: Picom (FTLabs)  
+- **Terminal**: Kitty (v0.39.0)  
+- **File Manager**: Thunar  
+- **Application Launcher**: Rofi  
+- **Editor**: Vim, Neovim  
+- **Keybindings**: sxhkd  
+- **Notification Manager**: Dunst  
 
-### 🚀 Features
-- **Minimal & Lightweight** 🏗️
-- **Keyboard-Driven Workflow** ⌨️
-- **Custom Keybindings & Scripts** 🛠️
-- **Neovim Configured for Productivity** 📜
-- **Picom for Smooth Transparency & Shadows** ✨
+## 🎨 Aesthetic Configuration  
 
----
+- **Theme**: Nordic-darker [GTK2/3]  
+- **Icons**: Papirus-Dark [GTK2/3]  
+- **Font**: JetBrainsMono Nerd Font Mono (12pt, Thin) [GTK2/3]  
+- **Terminal Font**: FreeMono (14pt)  
+- **Cursor**: Adwaita  
 
-### 📷 Screenshots
-*(Add screenshots of your setup here if needed!)*
+## 🚀 Features  
 
-### ⚙️ Installation & Dotfiles
-*(Link to your dotfiles if you have them on GitHub!)*
+- **Minimal & Lightweight** 🏗️  
+- **Keyboard-Driven Workflow** ⌨️  
+- **Custom Keybindings & Scripts** 🛠️  
+- **Neovim Configured for Productivity** 📜  
+- **Picom for Smooth Transparency & Shadows** ✨  
+
+---  
+
+### 📷 Screenshots  
+*(Add screenshots of your setup here!)*  
+
+### ⚙️ Installation & Dotfiles  
+*(Link to your dotfiles if available!)*  
 
 ```bash
 # Clone your dotfiles repo (if available)
