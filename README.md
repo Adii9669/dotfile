@@ -12,6 +12,9 @@
 - **Editor**: Vim, Neovim  
 - **Keybindings**: sxhkd  
 - **Notification Manager**: Dunst  
+- **Network Manager**: nm-applet  
+- **Audio Control**: volumeicon  
+- **Bluetooth**: bluez  
 
 ## 🎨 Aesthetic Configuration  
 
@@ -29,14 +32,11 @@
 - **Neovim Configured for Productivity** 📜  
 - **Picom for Smooth Transparency & Shadows** ✨  
 
----  
+---
 
-### 📷 Screenshots  
-*(Add screenshots of your setup here!)*  
+## ⚙️ Installation  
 
-### ⚙️ Installation & Dotfiles  
-*(Link to your dotfiles if available!)*  
+### Install Essential Packages  
 
 ```bash
-# Clone your dotfiles repo (if available)
-git clone https://github.com/yourusername/dotfiles.git ~/.config
+sudo pacman -S nm-applet volumeicon bluez bluez-utils
