@@ -1,45 +1,46 @@
 #!/usr/bin/env bash
 
 # Change this depending on your battery in /sys/class/power_supply/
-battery="BAT1";
+battery="BAT1"
 
 has_battery() {
-    if [ -d /sys/class/power_supply/$battery ]; then
-        return 0;
+    if [ -d "/sys/class/power_supply/$battery" ]; then
+        return 0
     fi
-    return 1;
+    return 1
 }
+
 get_battery_status() {
     charge="$(get_charging_status)"
-    echo """ "$charge"%"
+    # Get the percentage as well
+    percentage="$(cat "/sys/class/power_supply/$battery/capacity")"
+    echo "$charge $percentage%"
 }
 
 get_charging_status() {
     cat "/sys/class/power_supply/$battery/status"
 }
 
-
 get_status() {
-    battery_status="";
+    battery_status=""
     if $(has_battery); then
-        battery_status=" $(get_battery_status) |";
+        battery_status="$(get_battery_status)"
     fi
-
-    echo "${battery_status}";
+    echo "$battery_status"
 }
 
 print_icon(){
-	if ["$(get_status())" == "Full"] then
-		echo " "
-	elif ["$(get_status())" == "Discharing"] then
-		echo ""
-	else
-		echo ""
-	fi
-}
-while true
-do
-    xsetroot -name "$(get_status)";
-    sleep 1m;
-done
+    status="$(get_charging_status)"
+    percentage="$(cat "/sys/class/power_supply/$battery/capacity")"
 
+    # Check if status is Charging, Discharging, or Full and show icon with percentage
+    if [[ "$status" == "Full" ]]; then
+        echo "󰁽$percentage%"
+    elif [[ "$status" == "Discharging" ]]; then
+        echo " $percentage%"
+    else
+        echo " $percentage%"
+    fi
+}
+
+print_icon
