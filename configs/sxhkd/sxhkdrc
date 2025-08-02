@@ -20,10 +20,10 @@ XF86AudioMute
 
 #Brightness up
 XF86MonBrightnessUp
-    .local/bin/notify_brightness up
+    /home/milo/.local/bin/notify_brightness up
 #Brightness Down
 XF86MonBrightnessDown
-    .local/bin/notify_brightness down
+    /home/milo/.local/bin/notify_brightness down
 
 
 
@@ -31,9 +31,6 @@ XF86MonBrightnessDown
 alt + space
 	rofi -show combi -modes combi -combi-modes "window,drun,run"
 
-#Thunar
-super + e
-      thunar
 
 #PowerManagement
 super + n 
@@ -41,8 +38,25 @@ super + n
 
 
 
+#better lock screen 
+ctrl + Shift + tilda   
+   betterlockscreen -l --dim   
+
+#thunar 
+super + v 
+      clipmenu
+
+#zen-browser
+super + z 
+      app.zen_browser.zen
 
 
 #Take the ScreenShot
-super + shift + s
-	flameshot gui -d 200; gimp ~/Pictures/Screenshot_$(date +%F_%T).png
+super + backslash
+       flameshot gui
+# 	flameshot gui -d 200; gimp ~/Pictures/Screenshot_$(date +%F_%T).png
+
+
+#change wallpaper
+alt + t 
+   .local/bin/walli
