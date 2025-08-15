@@ -1,20 +1,11 @@
 #!/bin/bash
+chosen=$(echo -e " Lock\n⏻ Logout\n Suspend\n Reboot\n⏻ Shutdown" | rofi -dmenu -i -p "System" )
 
-
-function powermenu {
-	options="Cancel\nShutdown\nRestart\nSleep\nslock"
-	selected=$(echo -e $options | dmenu)
-	if [[ $selected = "Shutdowm" ]]; then 
-		poweroff
-	elif [[ $selected = "Restart" ]]; then
-		reboot 
-	elif [[ $selected = "Sleep" ]]; then
-		systemctl suspend
-	elif [[ $selected = "slock" ]]; then
-		slock
-	elif [[ $selected = "Cancel" ]]; then
-		return 
-	fi
-}
-
-powermenu
+restart=$(echo -e "\n Reboot" | rofi -dmenu -i -p "System" )
+case "$chosen" in
+    " Lock") i3lock ;;
+    "⏻ Logout") i3-msg exit ;;
+    " Suspend") systemctl suspend ;;
+    " Reboot") systemctl reboot ;;
+    "⏻ Shutdown") systemctl poweroff ;;
+esac

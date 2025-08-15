@@ -33,14 +33,33 @@ print_icon(){
     status="$(get_charging_status)"
     percentage="$(cat "/sys/class/power_supply/$battery/capacity")"
 
+
+icon = 
+
+
     # Check if status is Charging, Discharging, or Full and show icon with percentage
-    if [[ "$status" == "Full" ]]; then
-        echo "󰁽$percentage%"
-    elif [[ "$status" == "Discharging" ]]; then
-        echo " $percentage%"
-    else
-        echo " $percentage%"
-    fi
+if [[ "$status" == "Charging" ]] || [[ "$status" == "Full" ]]; then
+    # Charging (even if nearly full)
+    echo "󰂄 $percentage%"
+elif [[ "$status" != "Charging" && "$percentage" -gt 70 ]]; then
+    # Not charging and low battery
+    echo "󰁹 $percentage%"
+elif [[ "$status" != "Charging" && "$percentage" -le 60 ]]; then
+    # Not charging and low battery
+    echo "󰂁 $percentage%"
+elif [[ "$status" != "Charging" && "$percentage" -le 50 ]]; then
+    # Not charging and low battery
+    echo "󰁽 $percentage%"
+elif [[ "$status" != "Charging" && "$percentage" -le 40 ]]; then
+    # Not charging and low battery
+    echo "󰁻 $percentage%"
+elif [[ "$status" != "Charging" && "$percentage" -le 40 ]]; then
+    # Not charging and low battery
+    echo "󰂃 $percentage%"
+else
+    # Normal battery icon
+    echo "󰂀 $percentage%"
+fi
 }
 
 print_icon

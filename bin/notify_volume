@@ -50,12 +50,12 @@ case $1 in
     ;;
 esac
 
-How It Works:
-
-    Before increasing the volume, it checks if the volume is below 100%.
-    If the volume is already at 100%, it does not increase further.
-    The mute icon changes dynamically based on volume level.
-
-This ensures your volume will never exceed 100%. 🚀 Let me know if you need more tweaks!
-
+# How It Works:
+#
+#     Before increasing the volume, it checks if the volume is below 100%.
+#     If the volume is already at 100%, it does not increase further.
+#     The mute icon changes dynamically based on volume level.
+#
+# This ensures your volume will never exceed 100%. 🚀 Let me know if you need more tweaks!
+#
 

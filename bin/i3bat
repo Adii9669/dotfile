@@ -1,0 +1,14 @@
+#!/bin/sh
+
+PERCENT=$(cat /sys/class/power_supply/BAT1/capacity | cut -d'.' -f1)
+STATUS=$(cat /sys/class/power_supply/BAT1/status)
+
+if [ "$STATUS" = "Charging" ]; then
+    ICON="🔌"
+elif [ "$STATUS" = "Discharging" ]; then
+    ICON="🔋"
+else
+    ICON="⚡"
+fi
+
+echo "$ICON $PERCENT%"

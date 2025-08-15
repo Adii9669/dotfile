@@ -1,0 +1,48 @@
+#!/bin/bash
+# Directory containing your wallpapers
+WALLPAPER_DIR="$HOME/Pictures/wallpaper"
+
+# Check if the wallpaper directory exists
+if [ ! -d "$WALLPAPER_DIR" ]; then
+    echo "Wallpaper directory not found: $WALLPAPER_DIR"
+    exit 1
+fi
+
+# Enable nullglob so that non-matching globs vanish
+shopt -s nullglob
+# Array of image files (adjust extensions as needed)
+images=("$WALLPAPER_DIR"/*.{jpg,png,jpeg,webp})
+shopt -u nullglob
+
+# Exit if no images are found
+if [ ${#images[@]} -eq 0 ]; then
+    echo "No image files found in $WALLPAPER_DIR"
+    exit 1
+fi
+
+# Build a list of only the basenames for rofi display.
+basenames=()
+for img in "${images[@]}"; do
+    basenames+=("$(basename "$img")")
+done
+
+# Launch rofi to select a wallpaper.
+# The menu displays only the filename, but the preview command uses the full path.
+selected=$(printf "%s\n" "${basenames[@]}" | \
+  rofi -dmenu -i -p "Select wallpaper" \
+    -preview-window "down:70%" \
+    -preview "chafa -c 256 -s 80x40 $WALLPAPER_DIR/{}")
+
+# If nothing was selected, exit.
+if [ -z "$selected" ]; then
+    exit 1
+fi
+
+# Construct the full path from the selected filename.
+fullpath="$WALLPAPER_DIR/$selected"
+
+# Set the wallpaper using feh.
+feh --bg-scale "$fullpath"
+
+# Optionally, send a notification.
+notify-send "Wallpaper Changed" "New wallpaper: $selected"
