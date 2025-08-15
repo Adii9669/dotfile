@@ -1,0 +1,156 @@
+{
+  "layer": "top",
+  "output": ["eDP-1"],
+
+  "on-scroll-up": "hyprctl dispatch workspace e+1",
+  "on-scroll-down": "hyprctl dispatch workspace e-1",
+  "modules-left": ["hyprland/workspaces", "wlr/taskbar"],
+  "modules-center": ["clock", "custom/music"],
+  "modules-right": [
+    "network",
+    "backlight",
+    "pulseaudio#microphone",
+    "pulseaudio",
+    "battery",
+    "custom/powermenu",
+    "bluetooth",
+  ],
+
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 50,
+    "tooltip": false,
+  },
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "active": "",
+    },
+    "max-length": 50,
+    "tooltip": false,
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+  },
+
+  "custom/powermenu": {
+    "format": "",
+    "tooltip": "Power Menu",
+    "on-click": "~/.config/rofi/powermenu.sh",
+  },
+
+  "bluetooth": {
+    "format": "󰂲",
+    "format-on": "{icon}",
+    "format-off": "{icon}",
+    "format-connected": "{icon}",
+    "format-icons": {
+      "on": "󰂯",
+      "off": "󰂲",
+      "connected": "󰂱",
+    },
+    "on-click": "blueman-manager",
+    "tooltip-format-connected": "{device_enumerate}",
+  },
+
+  "tray": {
+    "spacing": 20,
+  },
+
+  "clock": {
+    "format": "  {:%a - %d %b (%I:%M) }",
+    "format-alt": "{:%Y-%m-%d}",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+  },
+
+  "cpu": {
+    "format": " {usage}%",
+  },
+
+  "backlight": {
+    "format": "{icon}  {percent}%",
+    "format-icons": ["", "󰃜", "󰃛", "󰃞", "󰃝", "󰃟", "󰃠"],
+    "tooltip": false,
+  },
+
+  "battery": {
+    "bat": "BAT1",
+    "states": {
+      "full": 99,
+      "good": 98,
+      "normal": 98,
+      "warning": 20,
+      "critical": 20,
+    },
+
+    "format": "{icon}   {capacity}%",
+    "format-good": "{icon}   {capacity}%",
+    "format-full": "   {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-icons": ["", "", "", "", ""],
+    "interval": 30,
+  },
+
+  "temperature": {
+    "critical-threshold": 60,
+    "format": " {temperatureC}°C",
+  },
+
+  "network": {
+    "interface": "wlp3s0",
+    "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
+    "format": "Disconnected 󰤭",
+    "format-wifi": "{essid} {icon} ",
+    "format-disconnected": "  Disconnected 󰤭",
+    "on-click": "kitty -e nmtui",
+    "tooltip": false,
+    "max-length": 50,
+  },
+
+  //audio
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-muted": " ",
+    "format-icons": {
+      "default": ["", "", " "],
+    },
+    "on-click": "pavucontrol",
+  },
+
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": "",
+    "format-source-muted": " ",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+    "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SOURCE@ 5%+",
+    "on-scroll-down": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SOURCE@ 5%-",
+    "scroll-step": 5,
+    "tooltip": true,
+    "tooltip-format": " at {volume}%",
+  },
+
+  "custom/music": {
+    "format": "   {}",
+    "escape": true,
+    "interval": 5,
+    "tooltip": false,
+    "exec": "playerctl metadata --format='{{ artist }} - {{ title }}'",
+    "on-click": "playerctl play-pause",
+    "max-length": 50,
+
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+  },
+
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "all-outputs": true,
+    "active-first": true,
+    "tooltip-format": "{name}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "ignore-list": ["rofi", "kitty"],
+  },
+}
