@@ -113,6 +113,9 @@ source $ZSH/oh-my-zsh.sh
    alias clean='sudo pacman -Rns $(pacman -Qtdq)'
    alias cache='sudo pacman -Scc'
    alias file='ncdu /'
+   alias gtm='git checkout main'
+   alias gta='git checkout adii-branch'
+   alias editneo='nvim ~/.config/nvim/'
 #LocalScript to be used 
    export PATH="$HOME/.local/bin:$PATH"
 
