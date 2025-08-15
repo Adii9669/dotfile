@@ -1,0 +1,41 @@
+#!/bin/bash
+
+function send_notification() {
+  brightness=$(light -G | awk '{printf "%.0f", $1}')
+
+  # Choose icon based on brightness level
+  if [ "$brightness" -eq 0 ]; then
+    icon=" 󰛩 "  # Display off
+  elif [ "$brightness" -le 30 ]; then
+    icon=" 󰃞 "
+  elif [ "$brightness" -le 70 ]; then
+    icon=" 󰃟 "
+  else
+    icon=" 󰃠 "
+  fi
+
+  # Send persistent brightness notification
+  dunstify -a "ChangeBrightness" -u low -r 9999 -h int:value:"$brightness" "$icon Brightness ${brightness}%" -t 2000
+}
+
+case "$1" in
+  up)
+    current=$(light -G)
+    if (( $(echo " $current < 100" | bc -l) )); then
+      light -A 5
+    fi
+    send_notification
+    ;;
+  down)
+    light -U 5
+    send_notification
+    ;;
+  max)
+    light -S 100
+    send_notification
+    ;;
+  *)
+    echo "Usage: $0 {up|down|max}"
+    exit 1
+    ;;
+esac

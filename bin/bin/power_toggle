@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Get the current power mode
+MODE=$(powerprofilesctl get)
+
+# Toggle between modes
+if [[ "$MODE" == "power-saver" ]]; then
+    powerprofilesctl set balanced     
+    notify-send "Power Mode: Balanced ⚖️ "
+elif [[ "$MODE" == "balanced" ]]; then
+    powerprofilesctl set performance
+    notify-send "Power Mode: Performance 🔥"
+else
+    powerprofilesctl set power-saver
+    notify-send "Power Mode: Power Saver 💤 "
+fi
+

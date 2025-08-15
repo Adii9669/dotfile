@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+# Change this depending on your battery in /sys/class/power_supply/
+battery="BAT1"
+
+has_battery() {
+    if [ -d "/sys/class/power_supply/$battery" ]; then
+        return 0
+    fi
+    return 1
+}
+
+get_battery_status() {
+    charge="$(get_charging_status)"
+    # Get the percentage as well
+    percentage="$(cat "/sys/class/power_supply/$battery/capacity")"
+    echo "$charge $percentage%"
+}
+
+get_charging_status() {
+    cat "/sys/class/power_supply/$battery/status"
+}
+
+get_status() {
+    battery_status=""
+    if $(has_battery); then
+        battery_status="$(get_battery_status)"
+    fi
+    echo "$battery_status"
+}
+
+print_icon(){
+    status="$(get_charging_status)"
+    percentage="$(cat "/sys/class/power_supply/$battery/capacity")"
+
+
+
+
+    # Check if status is Charging, Discharging, or Full and show icon with percentage
+if [[ "$status" == "Charging" ]] || [[ "$status" == "Full" ]]; then
+    # Charging (even if nearly full)
+    echo "󰂄 $percentage%"
+elif [[ "$status" != "Charging" && "$percentage" -gt 70 ]]; then
+    # Not charging and low battery
+    echo "󰁹 $percentage%"
+elif [[ "$status" != "Charging" && "$percentage" -le 60 ]]; then
+    # Not charging and low battery
+    echo "󰂁 $percentage%"
+elif [[ "$status" != "Charging" && "$percentage" -le 50 ]]; then
+    # Not charging and low battery
+    echo "󰁽 $percentage%"
+elif [[ "$status" != "Charging" && "$percentage" -le 40 ]]; then
+    # Not charging and low battery
+    echo "󰁻 $percentage%"
+elif [[ "$status" != "Charging" && "$percentage" -le 40 ]]; then
+    # Not charging and low battery
+    echo "󰂃 $percentage%"
+else
+    # Normal battery icon
+    echo "󰂀 $percentage%"
+fi
+}
+
+print_icon

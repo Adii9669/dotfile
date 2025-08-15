@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# Set the path to your dwm directory
+DWM_DIR="$HOME/suckless/dwm"
+THEMES_DIR="$DWM_DIR/themes"
+
+# If no argument is given, list available themes
+if [ -z "$1" ]; then
+    echo "Available themes:"
+    ls "$THEMES_DIR" | sed 's/\.h$//'
+    exit 1
+fi
+
+# Define the available themes dynamically (safer than hardcoding)
+THEMES=($(ls "$THEMES_DIR" | sed 's/\.h$//'))
+
+# Validate the selected theme
+VALID_THEME=false
+for theme in "${THEMES[@]}"; do
+    if [[ "$theme" == "$1" ]]; then
+        VALID_THEME=true
+        break
+    fi
+done
+
+if [[ "$VALID_THEME" == "false" ]]; then
+    echo "Invalid theme. Available themes: ${THEMES[@]}"
+    exit 1
+fi
+
+# Force sudo password prompt
+sudo -k  # Invalidate cached sudo session
+if ! sudo -v; then
+    echo "Incorrect password or no sudo privileges. No changes made."
+    exit 1
+fi
+
+# Apply the selected theme
+THEME_FILE="$THEMES_DIR/$1.h"
+
+# Ensure `current.h` is properly replaced
+rm -f "$DWM_DIR/current.h"
+ln -sf "$THEME_FILE" "$DWM_DIR/current.h"
+echo "Applied $1 theme."
+
+# Rebuild and install dwm
+cd "$DWM_DIR" || exit 1
+make clean
+make || { echo "Build failed."; exit 1; }
+
+# Install dwm with sudo
+sudo make install || { echo "Installation failed. Please check your sudo password."; exit 1; }
+
+echo "Theme applied and dwm installed successfully!"

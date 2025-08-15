@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Define options with matching Nerd Font icons
+OPTIONS=" Lock\n Suspend\n Relaunch\n Restart\n Shutdown"
+
+# Use rofi to present the options and capture the choice.
+# We will point to our custom theme file here.
+choice=$(echo -e "$OPTIONS" | rofi -dmenu -p "Go..." -i -theme ~/.config/rofi/powermenu.rasi)
+
+# Perform action based on the choice
+case "$choice" in
+    " Lock")
+        swaylock
+        ;;
+    " Suspend")
+        systemctl suspend
+        ;;
+    " Relaunch")
+        # This will reload your Hyprland config, great for applying changes
+        hyprctl reload
+        ;;
+    " Restart")
+        systemctl reboot
+        ;;
+    " Shutdown")
+        systemctl poweroff
+        ;;
+esac

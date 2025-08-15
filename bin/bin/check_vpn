@@ -1,0 +1,5 @@
+#!/bin/sh
+
+
+echo -e "\n📡 Active DNS Servers:" && resolvectl dns | grep -v 'Link' && echo -e "\n🌐 DNS Leak Test:" && dig +short txt ch whoami.cloudflare @1.1.1.1 && echo -e "\n🔍 Warp Status:" 
+

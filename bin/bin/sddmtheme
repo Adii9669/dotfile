@@ -1,0 +1,25 @@
+#!/bin/bash
+
+BACKGROUND_DIRS="/usr/share/sddm/themes/mytheme/Backgrounds/"
+CONFIG_FILE="/usr/share/sddm/themes/mytheme/current_theme/japanese_aesthetic.conf"
+
+echo "^-^ ---Please Choose a Background Number from the list---- ^-^ "
+echo "--------------------------------------------------"
+
+# Corrected variable name: 'background_file'
+select background_file in $(ls "$BACKGROUND_DIRS" | grep -E '\.(png|jpg|gif|mp4|webm)$'); do
+    if [[ -n "$background_file" ]]; then
+        break
+    else
+        echo "Invalid selection. Please choose a valid option"
+    fi
+done
+
+# The script logic proceeds here after a valid selection is made
+relative_path="Backgrounds/$background_file"
+
+# Use 'sed' to find the 'Background=' line and replace its value.
+sed -i "s|^Background=.*$|Background=\"$relative_path\"|" "$CONFIG_FILE"
+
+echo ""
+echo "✅ Success! The background has been updated to: $background_file"

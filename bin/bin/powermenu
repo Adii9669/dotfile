@@ -1,0 +1,11 @@
+#!/bin/bash
+chosen=$(echo -e " Lock\n⏻ Logout\n Suspend\n Reboot\n⏻ Shutdown" | rofi -dmenu -i -p "System" )
+
+restart=$(echo -e "\n Reboot" | rofi -dmenu -i -p "System" )
+case "$chosen" in
+    " Lock") i3lock ;;
+    "⏻ Logout") i3-msg exit ;;
+    " Suspend") systemctl suspend ;;
+    " Reboot") systemctl reboot ;;
+    "⏻ Shutdown") systemctl poweroff ;;
+esac
