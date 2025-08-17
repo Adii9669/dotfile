@@ -41,14 +41,6 @@
   font-weight: bold; /* Make active workspace text bold */
 }
 
-#backlight {
-  padding: 0 12px;
-  padding-right: 10px;
-  background: transparent;
-  color: #ffffff;
-  padding-right: 10px;
-}
-
 #bluetooth:hover,
 #pulseaudio:hover,
 #backlight:hover,
@@ -73,6 +65,16 @@
   color: #99d1db;
 }
 
+#backlight {
+  padding: 0 12px;
+  padding-right: 10px;
+  background: transparent;
+  color: #bddefc;
+  padding-right: 10px;
+}
+#backlight:hover {
+}
+
 #hyprland-window {
   font-size: 14px;
   font-weight: bold;
@@ -84,20 +86,25 @@
 #network {
   padding: 0 12px;
   padding-right: 10px;
+  color: #bddefc;
   background: transparent;
-  color: #ffffff;
   padding-right: 10px;
+}
+
+#network:hover {
+  background: #3781bf;
 }
 
 #pulseaudio {
   padding: 0 12px;
   padding-right: 10px;
+  color: #bddefc;
   background: transparent;
   padding-right: 10px;
 }
 
 #pulseaudio:hover {
-  color: #1a1826;
+  color: #3781bf;
   background: #f5e0dc;
 }
 
@@ -105,17 +112,22 @@
   padding-right: 10px;
   padding: 0 12px;
   background: transparent;
-  color: #ffffff;
+  color: #bddefc;
   padding-right: 10px;
 }
 
 #battery:hover {
-  background-color: rgb(41, 42, 53);
+  background: #3781bf;
 }
 #custom-powermenu {
   color: #b4befe; /* A nice color for the power button */
   padding-left: 10px;
   padding-right: 20px;
+}
+#custom-music {
+  color: #2fdf6d;
+  font-weight: bold; /* Make active workspace text bold */
+  /* background: */
 }
 
 #taskbar {
@@ -125,12 +137,6 @@
   margin: 6px 5px;
 }
 
-#custom-music:hover {
-  margin: 0px 6px 0px 10px;
-  min-width: 25px;
-  padding: 0 12px;
-  color: #ffffff;
-}
 #taskbar button {
   padding: 0px 5px;
   margin: 0px 3px;

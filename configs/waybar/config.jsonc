@@ -5,8 +5,9 @@
   "on-scroll-up": "hyprctl dispatch workspace e+1",
   "on-scroll-down": "hyprctl dispatch workspace e-1",
   "modules-left": ["hyprland/workspaces", "wlr/taskbar"],
-  "modules-center": ["clock", "custom/music"],
+  "modules-center": ["clock", ""],
   "modules-right": [
+    "cpu",
     "network",
     "backlight",
     "pulseaudio#microphone",
@@ -33,6 +34,7 @@
     "on-scroll-down": "hyprctl dispatch workspace e-1",
   },
 
+
   "custom/powermenu": {
     "format": "",
     "tooltip": "Power Menu",
@@ -58,14 +60,13 @@
   },
 
   "clock": {
-    "format": "  {:%a - %d %b (%I:%M) }",
-    "format-alt": "{:%Y-%m-%d}",
+    "format": "  {:%d - %I:%M }",
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1",
   },
 
   "cpu": {
-    "format": " {usage}%",
+    "format": "  {usage}%",
   },
 
   "backlight": {
@@ -86,11 +87,11 @@
 
     "format": "{icon}   {capacity}%",
     "format-good": "{icon}   {capacity}%",
-    "format-full": "   {capacity}%",
+    "format-full": "{icon}  {capacity}%",
     "format-charging": " {capacity}%",
     "format-plugged": " {capacity}%",
-    "format-icons": ["", "", "", "", ""],
-    "interval": 30,
+    "format-icons": ["", "", "", "", ""],
+    "interval": 2,
   },
 
   "temperature": {
@@ -114,7 +115,7 @@
     "format": "{icon}  {volume}%",
     "format-muted": " ",
     "format-icons": {
-      "default": ["", "", " "],
+      "default": [ "󰖁","", "", " "],
     },
     "on-click": "pavucontrol",
   },
@@ -132,14 +133,13 @@
   },
 
   "custom/music": {
-    "format": "   {}",
+    "format": "   {}",
     "escape": true,
-    "interval": 5,
+    "interval": 3,
     "tooltip": false,
     "exec": "playerctl metadata --format='{{ artist }} - {{ title }}'",
     "on-click": "playerctl play-pause",
-    "max-length": 50,
-
+    "max-length": 30,
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1",
   },
