@@ -1,6 +1,9 @@
 /* Global styles */
 * {
-  font-family: JetBrainsMono, FontAwesome, sans-serif;
+  font-family:
+    JetBrainsMono Nerd Font,
+    FontAwesome,
+    sans-serif;
   font-size: 20px;
   color: #ffffff;
 }
@@ -8,26 +11,21 @@
 /* Main bar */
 #waybar {
   background: rgba(30, 30, 46, 0.8); /* Semi-transparent dark background */
+  border-radius: 5px;
   padding-right: 30px; /* Adds space to the right side of the bar */
 }
 
 /* Workspaces */
 #workspaces button {
-  padding: 0 12px;
-  padding-right: 10px;
+  padding: 0 14px;
   background: transparent;
-
   font-size: 18px;
   color: #ffffff;
 }
 
-#workspaces {
-  padding-right: 10px;
-}
 #workspaces button.focused {
   background: #3b4261; /* Hover effect */
   color: #17294a;
-  /* color: #1e1e2e; */
 }
 
 #workspaces button:hover {
@@ -39,24 +37,42 @@
   background: #3781bf; /* Active workspace color */
   color: #1e1e2e;
   font-weight: bold; /* Make active workspace text bold */
+  border-radius: 4px;
 }
 
+#pulseaudio,
+#battery,
+#custom-music,
+#network,
+#hyprland-window,
+#backlight {
+  padding: 2px 12px;
+  padding-right: 10px;
+
+  background: transparent;
+  color: #ffffff;
+  border-radius: 9px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#custom-powermenu:hover,
 #bluetooth:hover,
 #pulseaudio:hover,
 #backlight:hover,
 #network:hover,
 #custom-lock:hover,
 #battery:hover {
-  background-color: rgb(41, 42, 53);
+  background-color: rgba(88, 91, 112, 0.71);
+  border: 1px solid rgba(236, 239, 244, 0.2);
+  border-radius: 8px;
 }
 
 #bluetooth {
-  padding-left: 10px;
-  padding-right: 10px;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
+  border-radius: 8px;
   color: #888888;
-  font-size: 23px;
+  font-size: 24px;
+  padding: 0 12px;
 }
 #bluetooth.on {
   color: #2196f3;
@@ -65,89 +81,19 @@
   color: #99d1db;
 }
 
-#backlight {
-  padding: 0 12px;
-  padding-right: 10px;
-  background: transparent;
-  color: #bddefc;
-  padding-right: 10px;
-}
-#backlight:hover {
-}
-
-#hyprland-window {
-  font-size: 14px;
-  font-weight: bold;
-  color: #ffffff;
-}
-
-/* Tray */
-
-#network {
-  padding: 0 12px;
-  padding-right: 10px;
-  color: #bddefc;
-  background: transparent;
-  padding-right: 10px;
-}
-
-#network:hover {
-  background: #3781bf;
-}
-
-#pulseaudio {
-  padding: 0 12px;
-  padding-right: 10px;
-  color: #bddefc;
-  background: transparent;
-  padding-right: 10px;
-}
-
-#pulseaudio:hover {
-  color: #3781bf;
-  background: #f5e0dc;
-}
-
-#battery {
-  padding-right: 10px;
-  padding: 0 12px;
-  background: transparent;
-  color: #bddefc;
-  padding-right: 10px;
-}
-
-#battery:hover {
-  background: #3781bf;
-}
 #custom-powermenu {
-  color: #b4befe; /* A nice color for the power button */
-  padding-left: 10px;
-  padding-right: 20px;
-}
-#custom-music {
-  color: #2fdf6d;
-  font-weight: bold; /* Make active workspace text bold */
-  /* background: */
+  color: #b4befe;
+  padding: 0 18px;
 }
 
-#taskbar {
-  background: transparent;
-  border-radius: 10px;
-  padding: 0px 5px;
-  margin: 6px 5px;
-}
-
-#taskbar button {
-  padding: 0px 5px;
-  margin: 0px 3px;
+#mpris {
+  margin: 0 3px;
+  color: #82bcf2;
   border-radius: 6px;
-  transition: background 0.3s ease;
+  padding: 0 6px;
 }
 
-#taskbar button.active {
-  background: rgba(34, 36, 54, 0.5);
-}
-
-#taskbar button:hover {
-  background: rgba(34, 36, 54, 0.5);
+#mpris:hover {
+  background-color: rgba(88, 91, 112, 0.71);
+  border: 1px solid rgba(236, 239, 244, 0.2);
 }
