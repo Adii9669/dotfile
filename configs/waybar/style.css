@@ -10,9 +10,9 @@
 
 /* Main bar */
 #waybar {
-  background: rgba(30, 30, 46, 0.8); /* Semi-transparent dark background */
-  border-radius: 5px;
-  padding-right: 30px; /* Adds space to the right side of the bar */
+  /* background: rgba(30, 30, 46, 0.8); */
+    background: #202224;
+  /* border-radius: 5px; */
 }
 
 /* Workspaces */
@@ -37,13 +37,14 @@
   background: #3781bf; /* Active workspace color */
   color: #1e1e2e;
   font-weight: bold; /* Make active workspace text bold */
-  border-radius: 4px;
+  border-radius: 1px;
 }
 
 #pulseaudio,
 #battery,
 #custom-music,
 #network,
+#tray,
 #hyprland-window,
 #backlight {
   padding: 2px 12px;
@@ -57,6 +58,7 @@
 }
 
 #custom-powermenu:hover,
+#tray:hover,
 #bluetooth:hover,
 #pulseaudio:hover,
 #backlight:hover,
@@ -97,3 +99,5 @@
   background-color: rgba(88, 91, 112, 0.71);
   border: 1px solid rgba(236, 239, 244, 0.2);
 }
+
+

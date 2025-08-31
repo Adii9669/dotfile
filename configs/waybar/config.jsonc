@@ -1,32 +1,41 @@
 {
   // "layer": "top",
   // "output": ["eDP-1"],
-  "layer": "top",
+  // "layer": "top",
   "position": "top",
-  "mod": "dock",
-  "margin-left": 3,
-  "margin-right": 3,
-  "margin-top": 5,
-  "margin-bottom": 2,
+  // "mod": "dock",
+  // "margin-left": 3,
+  // "margin-right": 3,
+  // "margin-top": 5,
+  // "margin-bottom": 1,
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
   "reload_style_on_change": true,
-  "on-scroll-up": "hyprctl dispatch workspace e+1",
-  "on-scroll-down": "hyprctl dispatch workspace e-1",
 
   "modules-left": ["hyprland/workspaces", "hyprland/window"],
   "modules-center": ["clock", "mpris"],
   "modules-right": [
-    "network",
+    "disk",
+    "custom/powermenu",
+    "bluetooth",
+    "pulseaudio#microphone",
     "backlight",
     "pulseaudio",
-    "pulseaudio#microphone",
+    "network",
     "battery",
-    "bluetooth",
-    "custom/powermenu",
+    "tray",
   ],
 
+  "disk": {
+    "interval": 10, // update every 30s
+    "path": "/", // which mountpoint ("/home", "/mnt", etc.)
+    "format": "{free}", // what to show (free, used, total, percentage)
+  },
+"tray": {
+    "icon-size": 28,
+    "spacing": 10
+  },
   "hyprland/workspaces": {
     "format": "{icon}",
     "all-outputs": true,
@@ -59,7 +68,7 @@
   },
 
   "clock": {
-    "format": "<span color='#BF00FF'>  </span>{:%I:%M%p - %dth%b}",
+    "format": "{:%a %d -<span color='#BF00FF'>  </span>%I:%M%p}",
     "tooltip": false,
     "calendar": {
       "mode": "month",
@@ -92,7 +101,7 @@
     "interface": "wlp3s0",
     "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
     "format": "Disconnected 󰤭",
-    "format-wifi": "{icon} {essid} ",
+    "format-wifi": "{icon} {essid}",
     "tooltip": true,
     "tooltip-format": "{essid}",
     "format-disconnected": "  Disconnected 󰤭",
@@ -102,7 +111,7 @@
 
   //brightness
   "backlight": {
-    "format": "<span color='#BF00FF'>{icon}</span> {percent}%",
+    "format": "<span color='#BF00FF'>{icon}</span>",
     "format-icons": ["", "󰃜", "󰃛", "󰃞", "󰃝", "󰃟", "󰃠"],
     "tooltip": false,
     "scroll-step": 4,
@@ -118,10 +127,10 @@
 
   //audio
   "pulseaudio": {
-    "format": "<span color='#efb558'>{icon}</span> {volume}%",
+    "format": "<span color='#efb558'>{icon}</span>",
     "format-muted": " ",
     "format-icons": {
-      "default": ["󰖁", "", "", "", " "],
+      "default": ["󰖁",  "", "", " "],
     },
     "on-click": "pavucontrol",
     "on-scroll-up": "~/.local/bin/notify_volume up",
@@ -187,6 +196,7 @@
       "connected": "󰂱",
     },
     "on-click": "blueman-manager",
+    "on-click-right": "~/.local/bin/connectmivi",
     "tooltip-format-connected": "{device_enumerate}",
   },
 
