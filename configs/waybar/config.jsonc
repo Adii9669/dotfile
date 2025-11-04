@@ -1,8 +1,7 @@
 {
-  // "layer": "top",
   // "output": ["eDP-1"],
   // "layer": "top",
-  "position": "top",
+  // "position": "top",
   // "mod": "dock",
   // "margin-left": 3,
   // "margin-right": 3,
@@ -45,13 +44,14 @@
     },
     "format-icons": {
       "active": "",
-      "1": "", // Web
-      "2": "", // Term
-      "3": "󰨞", // Code
-      "4": "*_*", // Gaming
+      
+      // "1": "", // Web
+      // "2": "", // Term
+      // "3": "󰨞", // Code
+      // "4": "*_*", // Gaming
 
-      "5": "", // Gaming
-      "default": "󱓻",
+      // "5": "", // Gaming
+      // "default": "󱓻",
     },
 
     "on-click": "activate",
@@ -59,37 +59,26 @@
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1",
   },
-
   "hyprland/window": {
-    "format": "<span  weight='bold' >{class}</span>",
-    "max-length": 14,
-    "icon": false,
-    "icon-size": 13,
+    "format": "󰣆 {title}",
+    "max-length": 16,
+    "separate-outputs": false,
+    "rewrite": {
+      "^.*( — LibreWolf|LibreWolf)$": "󰈹 LibreWolf",
+      "(.*) — Mozilla Firefox": " Firefox",
+      "^.*v( .*|$)": " Neovim",
+      "^.*~$": "󰄛 Kitty",
+      "(.*) ": " Empty",
+      "^.*pdf( .*|$)": "",
+      "^.*(- Mousepad)$" :" $1"
+    },
   },
 
   "clock": {
-    "format": "{:%a %d -<span color='#BF00FF'>  </span>%I:%M%p}",
+    "format": "{:%a <span color='#BF00FF'></span>%I:%M %p}",
     "tooltip": false,
-    "calendar": {
-      "mode": "month",
-      "mode-mon-col": 3,
-      "on-scroll": 1,
-      "on-click-right": "mode",
-      "format": {
-        "months": "<span color='#ffead3'><b>{}</b></span>",
-        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-        "today": "<span color='#ff6699'><b>{}</b></span>",
-      },
-    },
-    "actions": {
-      "on-click-right": "mode",
-      "on-click-forward": "tz_up",
-      "on-click-backward": "tz_down",
-      "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down",
-    },
     "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1"
   },
 
   "cpu": {
@@ -100,9 +89,12 @@
   "network": {
     "interface": "wlp3s0",
     "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
-    "format": "Disconnected 󰤭",
-    "format-wifi": "{icon} {essid}",
+    "format": "Disconnected󰤭",
+    "format-wifi": "{icon}",
     "tooltip": true,
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
     "tooltip-format": "{essid}",
     "format-disconnected": "  Disconnected 󰤭",
     "on-click": "kitty -e nmtui",
@@ -111,10 +103,11 @@
 
   //brightness
   "backlight": {
-    "format": "<span color='#BF00FF'>{icon}</span>",
+    "format": "{percent} {icon}",
     "format-icons": ["", "󰃜", "󰃛", "󰃞", "󰃝", "󰃟", "󰃠"],
     "tooltip": false,
     "scroll-step": 4,
+    "on-click": "~/.config/waybar/scripts/toggle_bright.sh",
     "on-scroll-up": "~/.local/bin/notify_brightness up",
     "on-scroll-down": "~/.local/bin/notify_brightness down",
     "min-length": 2,
@@ -126,19 +119,21 @@
   },
 
   //audio
-  "pulseaudio": {
-    "format": "<span color='#efb558'>{icon}</span>",
+  "pulseaudio": { // "format": "<span color='#efb558'>{icon}</span>",
+    "format": "{volume} {icon}",
     "format-muted": " ",
     "format-icons": {
       "default": ["󰖁",  "", "", " "],
     },
-    "on-click": "pavucontrol",
+    "on-click-right": "pavucontrol",
+    "on-click":"~/.config/waybar/scripts/toggle_volume.sh",
     "on-scroll-up": "~/.local/bin/notify_volume up",
     "on-scroll-down": "~/.local/bin/notify_volume down",
   },
 
   "pulseaudio#microphone": {
-    "format": "<span color='#35bcf2'>{format_source}</span>",
+    // "format": "<span color='#35bcf2'>{format_source}</span>",
+    "format": "{format_source}",
     "format-source": "",
     "format-source-muted": " ",
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
@@ -195,8 +190,8 @@
       "off": "󰂲",
       "connected": "󰂱",
     },
-    "on-click": "blueman-manager",
-    "on-click-right": "~/.local/bin/connectmivi",
+    "on-click-right": "blueman-manager",
+    "on-click": "~/.local/bin/connectmivi",
     "tooltip-format-connected": "{device_enumerate}",
   },
 
