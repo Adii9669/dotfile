@@ -45,14 +45,10 @@
     },
     "format-icons": {
       "active": "",
-      
-      // "1": "", // Web
-      // "2": "", // Term
-      // "3": "󰨞", // Code
-      // "4": "*_*", // Gaming
+        "default": " ",  
+        "empty": " ",    
+        "urgent": " "
 
-      // "5": "", // Gaming
-      // "default": "󱓻",
     },
 
     "on-click": "activate",
@@ -160,7 +156,7 @@
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1",
     "on-click": "playerctl play-pause",
-    "on-click-right": "~/.config/waybar/scripts/player.sh",
+    "on-click-right": "~/.config/waybar/scripts/audio_focus.sh",
   },
 
 
