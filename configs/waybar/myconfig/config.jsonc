@@ -1,10 +1,15 @@
 {
-  "layer": "top",
-  "position": "top",
+  // "output": ["eDP-1"],
+  // "layer": "top",
+  // "position": "top",
+  // "mod": "dock",
+  // "margin-left": 3,
+  // "margin-right": 3,
+  // "margin-top": 5,
+  // "margin-bottom": 1,
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
-  "spacing": 4,
   "reload_style_on_change": true,
 
   "modules-left": ["custom/menu","hyprland/workspaces", "hyprland/window"],
@@ -23,6 +28,7 @@
 
 "custom/menu": {
     "format": "",                // Arch logo, you can change this icon
+    "tooltip": "Open App Launcher",
     "on-click": "rofi -show drun", // opens rofi app menu
     "interval": "once"
 },
@@ -79,9 +85,7 @@
     "format": "{:%a <span color='#BF00FF'></span>%I:%M %p}",
     "tooltip": false,
     "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1",
-    "on-click": "swaync-client -t -sw",
-
+    "on-scroll-down": "hyprctl dispatch workspace e-1"
   },
 
   "cpu": {
@@ -126,7 +130,7 @@
     "format": "{volume} {icon}",
     "format-muted": " ",
     "format-icons": {
-      "default": ["󰖁", "","", "", "", " "],
+      "default": ["󰖁",  "", "", " "],
     },
     "on-click-right": "pavucontrol",
     "on-click":"~/.config/waybar/scripts/toggle_volume.sh",
@@ -150,7 +154,7 @@
   },
 
   "mpris": {
-    "format": "{player_icon} {status_icon} <span color='#161a1d'>{dynamic}</span>",
+    "format": "{player_icon} {status_icon} {title}",
     "status-icons": {
       "playing": "", // pause icon (Font Awesome / Nerd Font)
       "paused": "", // play icon
@@ -162,13 +166,6 @@
     "on-click": "playerctl play-pause",
     "on-click-right": "~/.config/waybar/scripts/player.sh",
   },
-
-
-
-
-
-
-
 
   //battter
   "battery": {
@@ -191,14 +188,14 @@
 
   //bluetooth
   "bluetooth": {
-    "format": "󰂲 ",
+    "format": "󰂲",
     "format-on": "{icon}",
     "format-off": "{icon}",
     "format-connected": "{icon}",
     "format-icons": {
-      "on": " ",
-      "off": "󰂲 ",
-      "connected": "󰂱 ",
+      "on": "",
+      "off": "󰂲",
+      "connected": "󰂱",
     },
     "on-click-right": "blueman-manager",
     "on-click": "~/.local/bin/connectmivi",

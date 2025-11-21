@@ -1,0 +1,166 @@
+* {
+  /* This is the global font stack. */
+  font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+/* Main bar */
+#waybar {
+  /* background:#202224; */
+  /* background: rgba(100, 10, 50, 0.8); */
+   /* background: rgba(30, 24, 36, 1); */
+background: rgba(30, 24, 36, 1);
+}
+
+#custom-menu {
+    font-size: 18px;
+    padding: 0 10px;
+    color: #00bcd4; /* cyan accent */
+}
+#custom-menu:hover {
+    background: #222;
+    color: #fff;
+}
+
+/* Workspaces */
+#workspaces button {
+    padding: 9px 11px;
+    /* background: #1C1C1C;         */
+    /* color: #FFFFFF;              */
+    /* border: 2px solid #85D2E8; */
+    /* border-radius: 12px;        */
+    /* margin: 6px 3px;             */
+    /* min-width: 13px;             */
+    /* font-size: 66px;             */
+    transition: all 0.3s ease;  
+
+}
+
+#workspaces button.focused {
+  /* background: #3b4261; */
+  /* color: #17294a; */
+    background: #50B4C8;        
+    color: #111111;
+}
+
+#workspaces button:hover {
+    padding: 0 14px;
+   /* #585b70;  */
+   background: #333333; /* Darkens slightly on hover */
+    border: 2px solid #50B4C8; /* Highlights the border with the active color */
+    /* box-shadow: none; */
+}
+
+#workspaces button.active {
+  background: #3781bf; /* Active workspace color */
+  /* border-radius: 3px; */
+  color: #FFFFFF;
+  border: 0px solid #3b4261;
+}
+
+
+
+#window {
+
+
+ background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
+  padding: 0px 8px;
+  margin: 5px 4px 5px 4px;
+  /* background: alpha(@color12, 0.9); */
+  border-radius: 7px;
+  /* color: lighter(@main-color); */
+}
+
+#pulseaudio,
+#pulseaudio-microphone,
+#network {
+
+ background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
+  border: 2px solid rgba(255, 255, 255, 0.2); /* Subtle light border */
+  border-radius: 10px; /* Rounded corners for a softer look */
+  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+
+
+  /* background-color: rgba(38, 100, 140, 0.3); */
+  /* border: 1px solid rgba(236, 239, 244, 0.2); */
+  /* border-radius: 8px; */
+  margin: 4px 3px;
+  padding: 1px 10px;
+}
+
+
+#battery,
+#custom-music,
+#tray,
+#hyprland-window,
+#backlight {
+  padding: 1px 10px;
+  margin: 4px 3px;
+ background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
+  border: 2px solid rgba(255, 255, 255, 0.2); /* Subtle light border */
+  border-radius: 10px; /* Rounded corners for a softer look */
+
+ /* background-color: rgba(38, 100, 140, 0.3); */
+  /* border: 1px solid rgba(236, 239, 244, 0.2); */
+  border-radius: 8px;
+}
+
+
+
+
+#custom-powermenu:hover,
+#tray:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#network:hover,
+#custom-lock:hover,
+#battery:hover {
+  min-width: 65px;
+  padding: 1px 6px;
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid #80CDF3; 
+  border-radius: 12px;       
+  margin: 2px 3px;            
+  min-width: 65px;           
+}
+
+#bluetooth:hover {
+  background-color: rgba(88, 91, 112, 0.71);
+
+  /* background-color:  rgb(157, 138, 219); */
+/* rgba(236, 239, 244, 0.2); */
+  border: 1px solid rgb(157, 138, 219);
+  border-radius: 9px;
+}
+#bluetooth {
+  border-radius: 8px;
+  color: #888888;
+  font-size: 24px;
+  padding: 0 12px;
+}
+
+#bluetooth.on {
+  color: #2196f3;
+}
+#bluetooth.connected {
+  color: #99d1db;
+}
+
+#custom-powermenu {
+  color: #b4befe;
+  padding: 0 18px;
+}
+
+#mpris {
+  margin: 0 3px;
+  color: #82bcf2;
+  border-radius: 6px;
+  padding: 0 6px;
+}
+
+#mpris:hover {
+  background-color: rgba(88, 91, 112, 0.71);
+  border: 1px solid rgba(236, 239, 244, 0.2);
+}
