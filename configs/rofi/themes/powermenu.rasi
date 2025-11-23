@@ -16,7 +16,7 @@ configuration {
 * {
     /* Resolution : 1920x1080 */
     mainbox-spacing:             100px;
-    mainbox-margin:              150px 400px;
+    mainbox-margin:              100px 400px;
     message-margin:              0px 350px;
     message-padding:             15px;
     message-border-radius:       15px;
@@ -85,7 +85,7 @@ textbox {
     font:                        var(textbox-font);
     background-color:            transparent;
     text-color:                  inherit;
-    vertical-align:              0.5;
+    vertical-align:              0.2;
     horizontal-align:            0.5;
 }
 
@@ -122,7 +122,8 @@ element-text {
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
-    vertical-align:              0.5;
+    location:                    center;
+    vertical-align:              0.0;
     horizontal-align:            0.5;
 }
 element selected.normal {

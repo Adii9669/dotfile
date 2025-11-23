@@ -1,0 +1,59 @@
+configuration {
+    show-icons: true;
+    display-drun: "Power Menu";
+    modi: "drun";
+    font: "JetBrainsMono Nerd Font 18";
+    disable-history: true;
+    hide-scrollbar: true;
+    kb-row-select: "";
+}
+
+* {
+// #1E1D2E;
+    background: #1e1e2e;
+    foreground: #cdd6f4;
+    selected-background: #1E1D2E;
+    selected-foreground: #1E1D2E;
+    border-radius: 12px;
+    spacing: 10px;
+}
+
+window {
+    background: #1E1D2E;
+    width: 40%;
+    height: 40%;
+    border: 5px;
+    padding: 30px;
+}
+
+listview {
+    layout: vertical;
+    columns: 2;
+    row: 3;
+    lines: 3; 
+}
+
+element {
+  background-color: #f8f8f2;  
+    orientation: horizontal;
+    padding: 10px 9px;
+    border-radius: 12px;
+    background-color: black;
+    text-align: center;
+    cursor: pointer;             
+}
+
+
+element-icon {
+    size: 40px;
+    cursor: pointer;             
+    margin: 0 0 0px 0;
+}
+
+element-text {
+    font: "JetBrainsMono Nerd Font 16";
+    cursor: pointer;             
+    text-align: center;
+    padding: 10px 0px;
+    horizontal-align: 0.5;
+}

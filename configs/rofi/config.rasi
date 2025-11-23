@@ -1,3 +1,4 @@
+
 configuration {
 	modi:				"drun";
 	font:				"HarmonyOS Sans SC bold 12";
