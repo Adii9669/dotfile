@@ -22,7 +22,7 @@
   ],
 
 "custom/menu": {
-    "format": "",                // Arch logo, you can change this icon
+    "format": "",                // Arch logo, you can change this icon
     "on-click": "rofi -show drun", // opens rofi app menu
     "interval": "once"
 },
