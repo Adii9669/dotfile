@@ -1,4 +1,3 @@
-
 configuration {
 	modi:				"drun";
 	font:				"HarmonyOS Sans SC bold 12";
@@ -6,10 +5,7 @@ configuration {
 	icon-theme: 			"Reversal-dark";
 	display-drun: 			"";
 	drun-display-format:            "{name}";
-	sidebar-mode: 			true;
-      scrollbar:                      true;
-      scroll-method:                     1; /* Enables smooth scrolling */
-location: 1; /* LEFT SIDE */
+	sidebar-mode: 			false;
 }
 
 @theme "/dev/null"
@@ -26,18 +22,9 @@ location: 1; /* LEFT SIDE */
 }
 
 window {
- border-radius:       8px;
-    location:         1;       /* LEFT SIDE */
-    width:            25%;     /* or 320px */
-    height:           120%;    /* FULL HEIGHT */
-    padding:          18px;
-}
-
-scrollbar {
-    width: 8px;
-    handle-color: #5e81ac;
-    color: #3b4252;
-    border-radius: 4px;
+	border-radius:                  5px;
+	width:			    	50%;
+	padding: 			28px;
 }
 
 prompt {
@@ -48,7 +35,7 @@ prompt {
 }
 
 entry {
-    	placeholder:		          	"Search";
+    	placeholder:			"Search";
 	background-color:               @button;
     	placeholder-color:              @fg;
     	expand:                         true;
@@ -65,9 +52,9 @@ inputbar {
 }
 
 listview {
-    	columns:                        5;
+    	columns:                        4;
     	lines:	                        3;
-    	cycle:                          true;
+    	cycle:                          false;
     	dynamic:                        true;
     	layout:                         vertical;
 }
@@ -84,8 +71,8 @@ element {
 }
 
 element-icon {
-    	size:                           55px;
-    	horizontal-align:	 	 0.5;
+    	size:                           48px;
+    	horizontal-align:	 	0.5;
 }
 
 element-text {
@@ -102,5 +89,5 @@ element-text, element-icon {
 
 element selected {
     	background-color:               @button;
-    	border-radius:                  8px;
+    	border-radius:                  6px;
 }
